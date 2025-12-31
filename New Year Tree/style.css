@@ -1,0 +1,130 @@
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html, body{
+  width:100%;
+  height:100%;
+  font-family: system-ui, sans-serif;
+}
+
+/* SCENE */
+.plan{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:#e8f3ec;
+  perspective:800px;
+  overflow:hidden;
+}
+
+h1{
+  margin-bottom:20px;
+  color:#2f4f4f;
+}
+
+/* TREE CONTAINER */
+.tree{
+  position:relative;
+  width:300px;
+  height:450px;
+  transform-style:preserve-3d;
+  animation: spin 12s linear infinite;
+}
+
+.leaf{
+  position:absolute;
+  width:140px;
+  height:200px;
+  background:linear-gradient(60deg, lightseagreen, green);
+  left:50%;
+
+  /* 🔥 KONİK FORM */
+  bottom: calc(80px + var(--i) * 3px);
+
+  transform-origin:left bottom;
+transform:
+    rotateY(calc(var(--i) * 10deg))
+    translateX(calc(90px - var(--i) * 1.2px))
+    translateZ(-10px); /* 🔥 yaprağı biraz arkaya */
+  border-radius:10px;
+}
+
+
+/* TRUNK */
+.trunk{
+  position:absolute;
+  width:20px;
+  height:120px;
+  background:linear-gradient(to right,#6b3e26,#8b4513);
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* STAR */
+.star{
+  position:absolute;
+  width:40px;
+  height:40px;
+  background:gold;
+  top:-10px;
+  left:50%;
+  transform:translateX(-50%) rotate(45deg);
+  box-shadow:0 0 20px gold;
+}
+/* =========================
+   DECORATION (SÜS TOPLARI)
+   ========================= */
+
+.decoration{
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+
+  background: radial-gradient(
+    circle at top left,
+    #ffffff,
+    crimson
+  );
+
+  left:50%;
+  bottom: calc(80px + var(--i) * 3px);
+
+  transform:
+    rotateY(calc(var(--i) * 10deg))
+    translateX(calc(95px - var(--i) * 1.2px))
+    translateZ(25px); /* 🔥 ASIL ÇÖZÜM */
+
+  box-shadow:
+    0 0 6px rgba(255,0,0,0.8);
+
+  animation: blink 2s infinite alternate;
+}
+
+
+
+
+/* SHADOW */
+.shadow{
+  position:absolute;
+  width:160px;
+  height:40px;
+  background:radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 70%);
+  bottom:-20px;
+  left:50%;
+  transform:translateX(-50%) rotateX(90deg);
+}
+
+/* ROTATION */
+@keyframes spin{
+  from{ transform: rotateY(0deg); }
+  to{ transform: rotateY(360deg); }
+}
